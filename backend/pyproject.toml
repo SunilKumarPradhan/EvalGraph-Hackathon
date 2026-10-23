@@ -1,0 +1,37 @@
+[project]
+name = "evalgraph"
+version = "0.1.0"
+description = "EvalGraph: visual, architecture-aware evaluation for LLM applications."
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "python-dotenv>=1.0",
+    "openai>=1.40",
+    "httpx>=0.27",
+    "requests>=2.31",
+    "pyyaml>=6.0",
+    "diskcache>=5.6",
+    "cuda-archer",
+    "tree-sitter>=0.23",
+    "tree-sitter-language-pack>=0.7",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.uv.sources]
+# Demo target, cloned as a sibling of the EvalGraph folder (see docs/01-SETUP-WINDOWS.md).
+cuda-archer = { path = "../../cuda-archer", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["evalgraph"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
