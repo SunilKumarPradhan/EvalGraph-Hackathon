@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #0b0f17;
+  --color-panel: #131a26;
+  --color-panel-2: #1a2333;
+  --color-line: #263146;
+  --color-ink: #e6ebf5;
+  --color-muted: #8b97ad;
+  --color-accent: #2dd4bf;
+  --color-good: #22c55e;
+  --color-warn: #f59e0b;
+  --color-bad: #ef4444;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  caret-color: var(--color-accent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+* {
+  scrollbar-color: var(--color-line) transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-line);
+  border-radius: 8px;
+  border: 2px solid var(--color-panel);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--color-muted); }
+
+@keyframes eg-pop {
+  from { opacity: 0; transform: scale(0.86) translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes eg-slide {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: none; }
+}
+.eg-pop { animation: eg-pop 0.32s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.eg-slide { animation: eg-slide 0.22s ease-out both; }
+
+/* React Flow: keep our node card as the only visual, no default wrapper chrome */
+.react-flow__node-component { padding: 0; border: 0; background: transparent; }
+.react-flow__attribution { display: none; }
+.react-flow__controls-button { background: var(--color-panel); border-color: var(--color-line); fill: var(--color-ink); }
