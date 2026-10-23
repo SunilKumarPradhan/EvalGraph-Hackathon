@@ -218,3 +218,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# EvalGraph project-specific
+data/
+.env
+.venv/
+node_modules/
+dist/
+frontend/public/fixtures/
+scripts/video/out/
+.evalgraph-run.pids
+/docs/
+HACKATHON.md
+CLAUDE.md
+
+# un-ignore paths caught by generic lib/ rule above
+!frontend/src/lib/
