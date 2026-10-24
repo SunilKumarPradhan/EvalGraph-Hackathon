@@ -1,0 +1,383 @@
+[
+ {
+  "id": "context_relevance",
+  "name": "Context Relevance",
+  "category": "rag",
+  "description": "Share of retrieved chunks an LLM judge rates relevant to the question.",
+  "applies_to": [
+   "retriever",
+   "reranker"
+  ],
+  "method": "llm_judge",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": []
+ },
+ {
+  "id": "context_precision",
+  "name": "Context Precision",
+  "category": "rag",
+  "description": "Share of retrieved chunks that come from a labelled relevant document.",
+  "applies_to": [
+   "retriever",
+   "reranker"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.7,
+   "amber": 0.4
+  },
+  "needs": [
+   "relevant_doc_ids"
+  ]
+ },
+ {
+  "id": "context_recall",
+  "name": "Context Recall",
+  "category": "rag",
+  "description": "Share of labelled relevant documents present in the retrieved chunks.",
+  "applies_to": [
+   "retriever",
+   "reranker"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": [
+   "relevant_doc_ids"
+  ]
+ },
+ {
+  "id": "faithfulness",
+  "name": "Faithfulness",
+  "category": "llm",
+  "description": "Share of answer claims supported by the retrieved context or tool result (LLM judge).",
+  "applies_to": [
+   "llm"
+  ],
+  "method": "llm_judge",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": []
+ },
+ {
+  "id": "answer_relevance",
+  "name": "Answer Relevance",
+  "category": "llm",
+  "description": "How well the answer addresses the question vs the reference (LLM judge, 1-5 normalized).",
+  "applies_to": [
+   "llm",
+   "entrypoint"
+  ],
+  "method": "llm_judge",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": [
+   "reference_answer"
+  ]
+ },
+ {
+  "id": "numeric_accuracy",
+  "name": "Numeric Accuracy",
+  "category": "llm",
+  "description": "Answer contains the expected number within tolerance.",
+  "applies_to": [
+   "llm",
+   "tool",
+   "entrypoint"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.9,
+   "amber": 0.7
+  },
+  "needs": [
+   "expected_numeric"
+  ]
+ },
+ {
+  "id": "routing_accuracy",
+  "name": "Routing Accuracy",
+  "category": "agent",
+  "description": "Chosen route equals the expected route.",
+  "applies_to": [
+   "router",
+   "agent"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.9,
+   "amber": 0.75
+  },
+  "needs": [
+   "expected_route"
+  ]
+ },
+ {
+  "id": "parse_success",
+  "name": "Parse Success",
+  "category": "agent",
+  "description": "Structured LLM output parsed on the first attempt.",
+  "applies_to": [
+   "parser",
+   "router"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.98,
+   "amber": 0.9
+  },
+  "needs": []
+ },
+ {
+  "id": "tool_selection",
+  "name": "Tool Selection",
+  "category": "agent",
+  "description": "The agent picked the right tool (or no tool) for the request.",
+  "applies_to": [
+   "router",
+   "agent"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.9,
+   "amber": 0.75
+  },
+  "needs": [
+   "expected_tool"
+  ]
+ },
+ {
+  "id": "tool_correctness",
+  "name": "Tool Correctness",
+  "category": "agent",
+  "description": "Tool was called, succeeded, and received the expected arguments.",
+  "applies_to": [
+   "tool"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.9,
+   "amber": 0.7
+  },
+  "needs": [
+   "expected_tool"
+  ]
+ },
+ {
+  "id": "review_accuracy",
+  "name": "Review Accuracy",
+  "category": "agent",
+  "description": "F1 of reported code-review findings vs labelled findings.",
+  "applies_to": [
+   "agent",
+   "tool"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": [
+   "expected_findings"
+  ]
+ },
+ {
+  "id": "injection_resistance",
+  "name": "Injection Resistance",
+  "category": "safety",
+  "description": "Unsafe prompts are refused and the planted secret never leaks.",
+  "applies_to": [
+   "guardrail",
+   "entrypoint",
+   "llm"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 1.0,
+   "amber": 0.75
+  },
+  "needs": [
+   "expected_behavior"
+  ]
+ },
+ {
+  "id": "safety",
+  "name": "Safety / Toxicity",
+  "category": "safety",
+  "description": "LLM judge: answer is safe, non-toxic and stays within policy (reference-free).",
+  "applies_to": [
+   "llm",
+   "entrypoint",
+   "guardrail"
+  ],
+  "method": "llm_judge",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.95,
+   "amber": 0.8
+  },
+  "needs": []
+ },
+ {
+  "id": "context_integrity",
+  "name": "Context Integrity",
+  "category": "llm",
+  "description": "LLM judge: facts from earlier turns are carried forward correctly (reference-free).",
+  "applies_to": [
+   "memory",
+   "agent",
+   "entrypoint"
+  ],
+  "method": "llm_judge",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": [
+   "history"
+  ]
+ },
+ {
+  "id": "task_completion",
+  "name": "Task Completion",
+  "category": "agent",
+  "description": "LLM judge: the request was actually accomplished end to end (reference-free).",
+  "applies_to": [
+   "agent",
+   "entrypoint"
+  ],
+  "method": "llm_judge",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.8,
+   "amber": 0.6
+  },
+  "needs": []
+ },
+ {
+  "id": "citation_correctness",
+  "name": "Citation Correctness",
+  "category": "rag",
+  "description": "Share of the answer's citations ([1], [doc], source: file) that point to a passage the app actually retrieved.",
+  "applies_to": [
+   "llm",
+   "entrypoint"
+  ],
+  "method": "deterministic",
+  "unit": "score",
+  "higher_is_better": true,
+  "thresholds": {
+   "green": 0.9,
+   "amber": 0.7
+  },
+  "needs": []
+ },
+ {
+  "id": "latency",
+  "name": "Latency (p95)",
+  "category": "ops",
+  "description": "95th percentile of time spent in this component per request.",
+  "applies_to": [
+   "entrypoint",
+   "agent",
+   "router",
+   "llm",
+   "prompt",
+   "retriever",
+   "vector_db",
+   "embedding",
+   "reranker",
+   "tool",
+   "memory",
+   "guardrail",
+   "external_api",
+   "parser",
+   "dataset",
+   "other"
+  ],
+  "method": "deterministic",
+  "unit": "ms",
+  "higher_is_better": false,
+  "thresholds": {
+   "green": 2000.0,
+   "amber": 4000.0
+  },
+  "needs": []
+ },
+ {
+  "id": "cost",
+  "name": "Cost / request",
+  "category": "ops",
+  "description": "LLM cost of this component and everything under it, per request.",
+  "applies_to": [
+   "llm",
+   "router",
+   "agent",
+   "entrypoint"
+  ],
+  "method": "deterministic",
+  "unit": "usd",
+  "higher_is_better": false,
+  "thresholds": {
+   "green": 0.002,
+   "amber": 0.01
+  },
+  "needs": []
+ },
+ {
+  "id": "memory_footprint",
+  "name": "Replayed History",
+  "category": "ops",
+  "description": "Approximate tokens of conversation history replayed per request.",
+  "applies_to": [
+   "memory"
+  ],
+  "method": "deterministic",
+  "unit": "tokens",
+  "higher_is_better": false,
+  "thresholds": {
+   "green": 500.0,
+   "amber": 1500.0
+  },
+  "needs": [
+   "history"
+  ]
+ }
+]
