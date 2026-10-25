@@ -1,0 +1,6093 @@
+{
+ "recorded_at": "2026-10-08T17:57:53+00:00",
+ "mock": false,
+ "models": {
+  "analysis": "gpt-4.1-2025-04-14",
+  "judge": "claude-haiku-4-5@20251001",
+  "app_large": "gpt-4o",
+  "app_small": "gpt-4.1-mini-2025-04-14"
+ },
+ "analyses": [
+  {
+   "analysis_id": "a_ca9424da",
+   "name": "CUDA-Archer",
+   "repo_url": null,
+   "commit": "1859b4e77fe1eb7b022ff7e5b64fc420c6837971",
+   "duration_s": 47.368,
+   "log": [
+    {
+     "t": 0.0,
+     "stage": "INGEST \u00b7 reading folder into memory",
+     "progress": 0.04,
+     "line": null
+    },
+    {
+     "t": 1.847,
+     "stage": "PARSE \u00b7 building the code graph",
+     "progress": 0.12,
+     "line": "INGEST: CUDA-Archer @ 1859b4e \u00b7 70 files (156 KB) held in memory"
+    },
+    {
+     "t": 1.937,
+     "stage": "UNDERSTAND \u00b7 tagging AI components",
+     "progress": 0.22,
+     "line": "PARSE: 39 code files (python) \u00b7 176 symbols \u00b7 frameworks: fastapi, fastembed, langgraph, openai, openai-azure(dial), qdrant"
+    },
+    {
+     "t": 1.959,
+     "stage": "UNDERSTAND \u00b7 semantic mapping",
+     "progress": 0.35,
+     "line": "UNDERSTAND: 25 AI components from 27 tagged symbols \u00b7 37 code slices selected by PageRank (23 KB)"
+    },
+    {
+     "t": 28.636,
+     "stage": "MAP \u00b7 assembling the pipeline",
+     "progress": 0.55,
+     "line": "UNDERSTAND (LLM): 37 component cards in 2 calls \u00b7 1 components discovered \u00b7 5 wrappers of known components skipped \u00b7 0 unverifiable claims dropped"
+    },
+    {
+     "t": 32.142,
+     "stage": "RECOMMEND \u00b7 mining bottlenecks",
+     "progress": 0.7,
+     "line": "MAP: 26 components \u00b7 48 connections \u00b7 LLM added 1, removed 1"
+    },
+    {
+     "t": 47.361,
+     "stage": "Done",
+     "progress": 0.96,
+     "line": "RECOMMEND: 24 static signals \u2192 21 hotspots (LLM rejected 0, added 1) \u00b7 30 evaluator recommendations \u00b7 8 LLM calls"
+    },
+    {
+     "t": 47.368,
+     "stage": "Done",
+     "progress": 0.99,
+     "line": "Detected 1 agent, 5 LLM calls, 1 router, 1 parser, 1 retriever, 1 reranker, 1 vector DB, 1 embedding model, 1 ingestion step, 4 tools, 1 external API, 1 guardrail, 2 memories, 1 prompt, 4 entrypoints \u00b7 21 evaluation gaps \u00b7 runnable (cuda_archer adapter)"
+    }
+   ]
+  }
+ ],
+ "runs": [
+  {
+   "run_id": "r_90b9b38b",
+   "analysis_id": "a_ca9424da",
+   "variant": "baseline",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 246.96,
+   "log": [
+    {
+     "t": 0.893,
+     "stage": "Warming up cuda_archer (baseline)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 23.397,
+     "stage": "Running cuda_archer (baseline) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 25.47,
+     "stage": "Running cuda_archer (baseline) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 26.28,
+     "stage": "Running cuda_archer (baseline) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 26.674,
+     "stage": "Running cuda_archer (baseline) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 32.409,
+     "stage": "Running cuda_archer (baseline) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 34.797,
+     "stage": "Running cuda_archer (baseline) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 35.718,
+     "stage": "Running cuda_archer (baseline) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 36.729,
+     "stage": "Running cuda_archer (baseline) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 42.541,
+     "stage": "Running cuda_archer (baseline) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 43.41,
+     "stage": "Running cuda_archer (baseline) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 43.976,
+     "stage": "Running cuda_archer (baseline) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 50.881,
+     "stage": "Running cuda_archer (baseline) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 51.271,
+     "stage": "Running cuda_archer (baseline) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 53.634,
+     "stage": "Running cuda_archer (baseline) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 58.311,
+     "stage": "Running cuda_archer (baseline) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 60.8,
+     "stage": "Running cuda_archer (baseline) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 61.769,
+     "stage": "Running cuda_archer (baseline) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 62.956,
+     "stage": "Running cuda_archer (baseline) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 67.004,
+     "stage": "Running cuda_archer (baseline) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 69.938,
+     "stage": "Running cuda_archer (baseline) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 71.169,
+     "stage": "Running cuda_archer (baseline) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 71.591,
+     "stage": "Running cuda_archer (baseline) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 74.109,
+     "stage": "Running cuda_archer (baseline) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 75.584,
+     "stage": "Running cuda_archer (baseline) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 79.752,
+     "stage": "Running cuda_archer (baseline) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 79.892,
+     "stage": "Running cuda_archer (baseline) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 81.881,
+     "stage": "Running cuda_archer (baseline) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 83.887,
+     "stage": "Running cuda_archer (baseline) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 84.644,
+     "stage": "Running cuda_archer (baseline) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 85.197,
+     "stage": "Running cuda_archer (baseline) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 85.431,
+     "stage": "Running cuda_archer (baseline) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 90.175,
+     "stage": "Running cuda_archer (baseline) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 93.32,
+     "stage": "Running cuda_archer (baseline) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 93.347,
+     "stage": "Running cuda_archer (baseline) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 94.584,
+     "stage": "Running cuda_archer (baseline) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 96.02,
+     "stage": "Running cuda_archer (baseline) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 97.068,
+     "stage": "Running cuda_archer (baseline) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 97.291,
+     "stage": "Running cuda_archer (baseline) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 98.974,
+     "stage": "Running cuda_archer (baseline) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 99.767,
+     "stage": "Running cuda_archer (baseline) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 106.435,
+     "stage": "Running cuda_archer (baseline) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 106.436,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (baseline) on 41 samples"
+    },
+    {
+     "t": 106.439,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 110.631,
+     "stage": "Scoring 10/583",
+     "progress": 0.6051457975986277,
+     "line": null
+    },
+    {
+     "t": 114.524,
+     "stage": "Scoring 20/583",
+     "progress": 0.6102915951972555,
+     "line": null
+    },
+    {
+     "t": 119.326,
+     "stage": "Scoring 30/583",
+     "progress": 0.6154373927958834,
+     "line": null
+    },
+    {
+     "t": 123.039,
+     "stage": "Scoring 40/583",
+     "progress": 0.6205831903945112,
+     "line": null
+    },
+    {
+     "t": 125.029,
+     "stage": "Scoring 50/583",
+     "progress": 0.6257289879931389,
+     "line": null
+    },
+    {
+     "t": 125.029,
+     "stage": "Scoring 60/583",
+     "progress": 0.6308747855917667,
+     "line": null
+    },
+    {
+     "t": 180.912,
+     "stage": "Scoring 70/583",
+     "progress": 0.6360205831903945,
+     "line": null
+    },
+    {
+     "t": 182.97,
+     "stage": "Scoring 80/583",
+     "progress": 0.6411663807890223,
+     "line": null
+    },
+    {
+     "t": 187.388,
+     "stage": "Scoring 90/583",
+     "progress": 0.6463121783876501,
+     "line": null
+    },
+    {
+     "t": 189.089,
+     "stage": "Scoring 100/583",
+     "progress": 0.6514579759862779,
+     "line": null
+    },
+    {
+     "t": 191.763,
+     "stage": "Scoring 110/583",
+     "progress": 0.6566037735849056,
+     "line": null
+    },
+    {
+     "t": 191.763,
+     "stage": "Scoring 120/583",
+     "progress": 0.6617495711835334,
+     "line": null
+    },
+    {
+     "t": 191.763,
+     "stage": "Scoring 130/583",
+     "progress": 0.6668953687821613,
+     "line": null
+    },
+    {
+     "t": 191.763,
+     "stage": "Scoring 140/583",
+     "progress": 0.672041166380789,
+     "line": null
+    },
+    {
+     "t": 192.349,
+     "stage": "Scoring 150/583",
+     "progress": 0.6771869639794168,
+     "line": null
+    },
+    {
+     "t": 196.012,
+     "stage": "Scoring 160/583",
+     "progress": 0.6823327615780446,
+     "line": null
+    },
+    {
+     "t": 199.702,
+     "stage": "Scoring 170/583",
+     "progress": 0.6874785591766723,
+     "line": null
+    },
+    {
+     "t": 203.29,
+     "stage": "Scoring 180/583",
+     "progress": 0.6926243567753001,
+     "line": null
+    },
+    {
+     "t": 205.746,
+     "stage": "Scoring 190/583",
+     "progress": 0.697770154373928,
+     "line": null
+    },
+    {
+     "t": 205.746,
+     "stage": "Scoring 200/583",
+     "progress": 0.7029159519725557,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 210/583",
+     "progress": 0.7080617495711835,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 220/583",
+     "progress": 0.7132075471698113,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 230/583",
+     "progress": 0.718353344768439,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 240/583",
+     "progress": 0.7234991423670669,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 250/583",
+     "progress": 0.7286449399656947,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 260/583",
+     "progress": 0.7337907375643224,
+     "line": null
+    },
+    {
+     "t": 205.747,
+     "stage": "Scoring 270/583",
+     "progress": 0.7389365351629502,
+     "line": null
+    },
+    {
+     "t": 205.749,
+     "stage": "Scoring 280/583",
+     "progress": 0.744082332761578,
+     "line": null
+    },
+    {
+     "t": 205.749,
+     "stage": "Scoring 290/583",
+     "progress": 0.7492281303602057,
+     "line": null
+    },
+    {
+     "t": 205.749,
+     "stage": "Scoring 300/583",
+     "progress": 0.7543739279588336,
+     "line": null
+    },
+    {
+     "t": 205.749,
+     "stage": "Scoring 310/583",
+     "progress": 0.7595197255574614,
+     "line": null
+    },
+    {
+     "t": 205.749,
+     "stage": "Scoring 320/583",
+     "progress": 0.7646655231560892,
+     "line": null
+    },
+    {
+     "t": 205.749,
+     "stage": "Scoring 330/583",
+     "progress": 0.7698113207547169,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 340/583",
+     "progress": 0.7749571183533448,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 350/583",
+     "progress": 0.7801029159519726,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 360/583",
+     "progress": 0.7852487135506003,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 370/583",
+     "progress": 0.7903945111492281,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 380/583",
+     "progress": 0.7955403087478559,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 390/583",
+     "progress": 0.8006861063464836,
+     "line": null
+    },
+    {
+     "t": 205.75,
+     "stage": "Scoring 400/583",
+     "progress": 0.8058319039451115,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 410/583",
+     "progress": 0.8109777015437393,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 420/583",
+     "progress": 0.816123499142367,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 430/583",
+     "progress": 0.8212692967409948,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 440/583",
+     "progress": 0.8264150943396227,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 450/583",
+     "progress": 0.8315608919382504,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 460/583",
+     "progress": 0.8367066895368782,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 470/583",
+     "progress": 0.841852487135506,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 480/583",
+     "progress": 0.8469982847341337,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 490/583",
+     "progress": 0.8521440823327615,
+     "line": null
+    },
+    {
+     "t": 205.751,
+     "stage": "Scoring 500/583",
+     "progress": 0.8572898799313893,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 510/583",
+     "progress": 0.8624356775300172,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 520/583",
+     "progress": 0.8675814751286449,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 530/583",
+     "progress": 0.8727272727272727,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 540/583",
+     "progress": 0.8778730703259006,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 550/583",
+     "progress": 0.8830188679245283,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 560/583",
+     "progress": 0.8881646655231561,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 570/583",
+     "progress": 0.8933104631217839,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 580/583",
+     "progress": 0.8984562607204116,
+     "line": null
+    },
+    {
+     "t": 205.752,
+     "stage": "Scoring 583/583",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 205.754,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 205.755,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 246.966,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "16 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_b5d8efef",
+   "analysis_id": "a_ca9424da",
+   "variant": "fix-retrieval",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 250.12,
+   "log": [
+    {
+     "t": 0.88,
+     "stage": "Warming up cuda_archer (fix-retrieval)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 22.371,
+     "stage": "Running cuda_archer (fix-retrieval) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 22.82,
+     "stage": "Running cuda_archer (fix-retrieval) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 24.082,
+     "stage": "Running cuda_archer (fix-retrieval) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 25.83,
+     "stage": "Running cuda_archer (fix-retrieval) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 31.84,
+     "stage": "Running cuda_archer (fix-retrieval) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 33.771,
+     "stage": "Running cuda_archer (fix-retrieval) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 34.898,
+     "stage": "Running cuda_archer (fix-retrieval) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 36.249,
+     "stage": "Running cuda_archer (fix-retrieval) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 42.263,
+     "stage": "Running cuda_archer (fix-retrieval) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 44.519,
+     "stage": "Running cuda_archer (fix-retrieval) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 44.686,
+     "stage": "Running cuda_archer (fix-retrieval) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 46.004,
+     "stage": "Running cuda_archer (fix-retrieval) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 52.044,
+     "stage": "Running cuda_archer (fix-retrieval) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 53.4,
+     "stage": "Running cuda_archer (fix-retrieval) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 54.018,
+     "stage": "Running cuda_archer (fix-retrieval) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 60.667,
+     "stage": "Running cuda_archer (fix-retrieval) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 62.164,
+     "stage": "Running cuda_archer (fix-retrieval) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 63.766,
+     "stage": "Running cuda_archer (fix-retrieval) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 65.615,
+     "stage": "Running cuda_archer (fix-retrieval) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 71.652,
+     "stage": "Running cuda_archer (fix-retrieval) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 72.012,
+     "stage": "Running cuda_archer (fix-retrieval) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 72.614,
+     "stage": "Running cuda_archer (fix-retrieval) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 76.356,
+     "stage": "Running cuda_archer (fix-retrieval) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 77.512,
+     "stage": "Running cuda_archer (fix-retrieval) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 82.257,
+     "stage": "Running cuda_archer (fix-retrieval) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 83.607,
+     "stage": "Running cuda_archer (fix-retrieval) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 83.889,
+     "stage": "Running cuda_archer (fix-retrieval) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 83.908,
+     "stage": "Running cuda_archer (fix-retrieval) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 88.611,
+     "stage": "Running cuda_archer (fix-retrieval) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 89.862,
+     "stage": "Running cuda_archer (fix-retrieval) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 91.293,
+     "stage": "Running cuda_archer (fix-retrieval) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 93.263,
+     "stage": "Running cuda_archer (fix-retrieval) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 96.613,
+     "stage": "Running cuda_archer (fix-retrieval) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 98.353,
+     "stage": "Running cuda_archer (fix-retrieval) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 98.484,
+     "stage": "Running cuda_archer (fix-retrieval) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 99.812,
+     "stage": "Running cuda_archer (fix-retrieval) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 102.744,
+     "stage": "Running cuda_archer (fix-retrieval) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 103.918,
+     "stage": "Running cuda_archer (fix-retrieval) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 104.363,
+     "stage": "Running cuda_archer (fix-retrieval) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 104.47,
+     "stage": "Running cuda_archer (fix-retrieval) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 111.55,
+     "stage": "Running cuda_archer (fix-retrieval) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 111.55,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (fix-retrieval) on 41 samples"
+    },
+    {
+     "t": 111.553,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 115.757,
+     "stage": "Scoring 10/645",
+     "progress": 0.6046511627906976,
+     "line": null
+    },
+    {
+     "t": 120.147,
+     "stage": "Scoring 20/645",
+     "progress": 0.6093023255813953,
+     "line": null
+    },
+    {
+     "t": 123.694,
+     "stage": "Scoring 30/645",
+     "progress": 0.613953488372093,
+     "line": null
+    },
+    {
+     "t": 127.73,
+     "stage": "Scoring 40/645",
+     "progress": 0.6186046511627907,
+     "line": null
+    },
+    {
+     "t": 129.494,
+     "stage": "Scoring 50/645",
+     "progress": 0.6232558139534884,
+     "line": null
+    },
+    {
+     "t": 129.494,
+     "stage": "Scoring 60/645",
+     "progress": 0.627906976744186,
+     "line": null
+    },
+    {
+     "t": 130.394,
+     "stage": "Scoring 70/645",
+     "progress": 0.6325581395348837,
+     "line": null
+    },
+    {
+     "t": 134.929,
+     "stage": "Scoring 80/645",
+     "progress": 0.6372093023255814,
+     "line": null
+    },
+    {
+     "t": 138.201,
+     "stage": "Scoring 90/645",
+     "progress": 0.641860465116279,
+     "line": null
+    },
+    {
+     "t": 141.387,
+     "stage": "Scoring 100/645",
+     "progress": 0.6465116279069767,
+     "line": null
+    },
+    {
+     "t": 143.622,
+     "stage": "Scoring 110/645",
+     "progress": 0.6511627906976744,
+     "line": null
+    },
+    {
+     "t": 143.622,
+     "stage": "Scoring 120/645",
+     "progress": 0.655813953488372,
+     "line": null
+    },
+    {
+     "t": 143.622,
+     "stage": "Scoring 130/645",
+     "progress": 0.6604651162790698,
+     "line": null
+    },
+    {
+     "t": 143.622,
+     "stage": "Scoring 140/645",
+     "progress": 0.6651162790697674,
+     "line": null
+    },
+    {
+     "t": 144.458,
+     "stage": "Scoring 150/645",
+     "progress": 0.6697674418604651,
+     "line": null
+    },
+    {
+     "t": 148.033,
+     "stage": "Scoring 160/645",
+     "progress": 0.6744186046511628,
+     "line": null
+    },
+    {
+     "t": 203.416,
+     "stage": "Scoring 170/645",
+     "progress": 0.6790697674418604,
+     "line": null
+    },
+    {
+     "t": 207.871,
+     "stage": "Scoring 180/645",
+     "progress": 0.6837209302325581,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 190/645",
+     "progress": 0.6883720930232557,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 200/645",
+     "progress": 0.6930232558139535,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 210/645",
+     "progress": 0.6976744186046512,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 220/645",
+     "progress": 0.7023255813953488,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 230/645",
+     "progress": 0.7069767441860465,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 240/645",
+     "progress": 0.7116279069767442,
+     "line": null
+    },
+    {
+     "t": 210.357,
+     "stage": "Scoring 250/645",
+     "progress": 0.7162790697674418,
+     "line": null
+    },
+    {
+     "t": 210.358,
+     "stage": "Scoring 260/645",
+     "progress": 0.7209302325581395,
+     "line": null
+    },
+    {
+     "t": 210.358,
+     "stage": "Scoring 270/645",
+     "progress": 0.7255813953488373,
+     "line": null
+    },
+    {
+     "t": 210.358,
+     "stage": "Scoring 280/645",
+     "progress": 0.7302325581395348,
+     "line": null
+    },
+    {
+     "t": 210.358,
+     "stage": "Scoring 290/645",
+     "progress": 0.7348837209302326,
+     "line": null
+    },
+    {
+     "t": 210.358,
+     "stage": "Scoring 300/645",
+     "progress": 0.7395348837209302,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 310/645",
+     "progress": 0.7441860465116279,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 320/645",
+     "progress": 0.7488372093023256,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 330/645",
+     "progress": 0.7534883720930232,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 340/645",
+     "progress": 0.7581395348837209,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 350/645",
+     "progress": 0.7627906976744185,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 360/645",
+     "progress": 0.7674418604651163,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 370/645",
+     "progress": 0.772093023255814,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 380/645",
+     "progress": 0.7767441860465116,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 390/645",
+     "progress": 0.7813953488372093,
+     "line": null
+    },
+    {
+     "t": 210.359,
+     "stage": "Scoring 400/645",
+     "progress": 0.786046511627907,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 410/645",
+     "progress": 0.7906976744186046,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 420/645",
+     "progress": 0.7953488372093023,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 430/645",
+     "progress": 0.8,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 440/645",
+     "progress": 0.8046511627906976,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 450/645",
+     "progress": 0.8093023255813954,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 460/645",
+     "progress": 0.813953488372093,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 470/645",
+     "progress": 0.8186046511627907,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 480/645",
+     "progress": 0.8232558139534883,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 490/645",
+     "progress": 0.827906976744186,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 500/645",
+     "progress": 0.8325581395348837,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 510/645",
+     "progress": 0.8372093023255813,
+     "line": null
+    },
+    {
+     "t": 210.36,
+     "stage": "Scoring 520/645",
+     "progress": 0.8418604651162791,
+     "line": null
+    },
+    {
+     "t": 210.361,
+     "stage": "Scoring 530/645",
+     "progress": 0.8465116279069768,
+     "line": null
+    },
+    {
+     "t": 210.361,
+     "stage": "Scoring 540/645",
+     "progress": 0.8511627906976744,
+     "line": null
+    },
+    {
+     "t": 210.361,
+     "stage": "Scoring 550/645",
+     "progress": 0.8558139534883721,
+     "line": null
+    },
+    {
+     "t": 210.361,
+     "stage": "Scoring 560/645",
+     "progress": 0.8604651162790697,
+     "line": null
+    },
+    {
+     "t": 212.115,
+     "stage": "Scoring 570/645",
+     "progress": 0.8651162790697674,
+     "line": null
+    },
+    {
+     "t": 213.614,
+     "stage": "Scoring 580/645",
+     "progress": 0.8697674418604651,
+     "line": null
+    },
+    {
+     "t": 216.493,
+     "stage": "Scoring 590/645",
+     "progress": 0.8744186046511628,
+     "line": null
+    },
+    {
+     "t": 217.699,
+     "stage": "Scoring 600/645",
+     "progress": 0.8790697674418604,
+     "line": null
+    },
+    {
+     "t": 218.309,
+     "stage": "Scoring 610/645",
+     "progress": 0.8837209302325582,
+     "line": null
+    },
+    {
+     "t": 218.309,
+     "stage": "Scoring 620/645",
+     "progress": 0.8883720930232558,
+     "line": null
+    },
+    {
+     "t": 218.31,
+     "stage": "Scoring 630/645",
+     "progress": 0.8930232558139535,
+     "line": null
+    },
+    {
+     "t": 218.31,
+     "stage": "Scoring 640/645",
+     "progress": 0.8976744186046511,
+     "line": null
+    },
+    {
+     "t": 218.31,
+     "stage": "Scoring 645/645",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 218.311,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 218.312,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 250.13,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "18 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_d2bafc51",
+   "analysis_id": "a_ca9424da",
+   "variant": "fix-safety",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 175.66,
+   "log": [
+    {
+     "t": 0.932,
+     "stage": "Warming up cuda_archer (fix-safety)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 10.661,
+     "stage": "Running cuda_archer (fix-safety) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 10.821,
+     "stage": "Running cuda_archer (fix-safety) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 10.841,
+     "stage": "Running cuda_archer (fix-safety) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 11.361,
+     "stage": "Running cuda_archer (fix-safety) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 15.347,
+     "stage": "Running cuda_archer (fix-safety) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 16.205,
+     "stage": "Running cuda_archer (fix-safety) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 16.559,
+     "stage": "Running cuda_archer (fix-safety) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 17.218,
+     "stage": "Running cuda_archer (fix-safety) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 19.934,
+     "stage": "Running cuda_archer (fix-safety) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 20.719,
+     "stage": "Running cuda_archer (fix-safety) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 20.773,
+     "stage": "Running cuda_archer (fix-safety) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 22.128,
+     "stage": "Running cuda_archer (fix-safety) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 24.307,
+     "stage": "Running cuda_archer (fix-safety) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 24.369,
+     "stage": "Running cuda_archer (fix-safety) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 26.605,
+     "stage": "Running cuda_archer (fix-safety) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 28.217,
+     "stage": "Running cuda_archer (fix-safety) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 30.009,
+     "stage": "Running cuda_archer (fix-safety) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 34.502,
+     "stage": "Running cuda_archer (fix-safety) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 35.569,
+     "stage": "Running cuda_archer (fix-safety) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 36.148,
+     "stage": "Running cuda_archer (fix-safety) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 36.475,
+     "stage": "Running cuda_archer (fix-safety) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 39.536,
+     "stage": "Running cuda_archer (fix-safety) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 41.316,
+     "stage": "Running cuda_archer (fix-safety) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 41.906,
+     "stage": "Running cuda_archer (fix-safety) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 42.425,
+     "stage": "Running cuda_archer (fix-safety) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 42.926,
+     "stage": "Running cuda_archer (fix-safety) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 44.42,
+     "stage": "Running cuda_archer (fix-safety) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 45.065,
+     "stage": "Running cuda_archer (fix-safety) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 45.97,
+     "stage": "Running cuda_archer (fix-safety) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 46.292,
+     "stage": "Running cuda_archer (fix-safety) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 48.194,
+     "stage": "Running cuda_archer (fix-safety) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 50.952,
+     "stage": "Running cuda_archer (fix-safety) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 51.104,
+     "stage": "Running cuda_archer (fix-safety) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 51.304,
+     "stage": "Running cuda_archer (fix-safety) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 51.309,
+     "stage": "Running cuda_archer (fix-safety) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 51.313,
+     "stage": "Running cuda_archer (fix-safety) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 51.319,
+     "stage": "Running cuda_archer (fix-safety) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 51.322,
+     "stage": "Running cuda_archer (fix-safety) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 52.405,
+     "stage": "Running cuda_archer (fix-safety) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 55.851,
+     "stage": "Running cuda_archer (fix-safety) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 56.707,
+     "stage": "Running cuda_archer (fix-safety) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 56.707,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (fix-safety) on 41 samples"
+    },
+    {
+     "t": 56.71,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 60.863,
+     "stage": "Scoring 10/551",
+     "progress": 0.6054446460980036,
+     "line": null
+    },
+    {
+     "t": 65.009,
+     "stage": "Scoring 20/551",
+     "progress": 0.6108892921960072,
+     "line": null
+    },
+    {
+     "t": 69.519,
+     "stage": "Scoring 30/551",
+     "progress": 0.6163339382940108,
+     "line": null
+    },
+    {
+     "t": 73.588,
+     "stage": "Scoring 40/551",
+     "progress": 0.6217785843920145,
+     "line": null
+    },
+    {
+     "t": 74.466,
+     "stage": "Scoring 50/551",
+     "progress": 0.6272232304900182,
+     "line": null
+    },
+    {
+     "t": 74.466,
+     "stage": "Scoring 60/551",
+     "progress": 0.6326678765880217,
+     "line": null
+    },
+    {
+     "t": 76.567,
+     "stage": "Scoring 70/551",
+     "progress": 0.6381125226860254,
+     "line": null
+    },
+    {
+     "t": 134.188,
+     "stage": "Scoring 80/551",
+     "progress": 0.643557168784029,
+     "line": null
+    },
+    {
+     "t": 134.188,
+     "stage": "Scoring 90/551",
+     "progress": 0.6490018148820327,
+     "line": null
+    },
+    {
+     "t": 135.114,
+     "stage": "Scoring 100/551",
+     "progress": 0.6544464609800362,
+     "line": null
+    },
+    {
+     "t": 135.114,
+     "stage": "Scoring 110/551",
+     "progress": 0.6598911070780399,
+     "line": null
+    },
+    {
+     "t": 135.114,
+     "stage": "Scoring 120/551",
+     "progress": 0.6653357531760435,
+     "line": null
+    },
+    {
+     "t": 135.115,
+     "stage": "Scoring 130/551",
+     "progress": 0.6707803992740472,
+     "line": null
+    },
+    {
+     "t": 135.115,
+     "stage": "Scoring 140/551",
+     "progress": 0.6762250453720507,
+     "line": null
+    },
+    {
+     "t": 139.083,
+     "stage": "Scoring 150/551",
+     "progress": 0.6816696914700544,
+     "line": null
+    },
+    {
+     "t": 141.935,
+     "stage": "Scoring 160/551",
+     "progress": 0.6871143375680581,
+     "line": null
+    },
+    {
+     "t": 145.382,
+     "stage": "Scoring 170/551",
+     "progress": 0.6925589836660617,
+     "line": null
+    },
+    {
+     "t": 147.094,
+     "stage": "Scoring 180/551",
+     "progress": 0.6980036297640653,
+     "line": null
+    },
+    {
+     "t": 147.094,
+     "stage": "Scoring 190/551",
+     "progress": 0.7034482758620689,
+     "line": null
+    },
+    {
+     "t": 147.094,
+     "stage": "Scoring 200/551",
+     "progress": 0.7088929219600726,
+     "line": null
+    },
+    {
+     "t": 147.094,
+     "stage": "Scoring 210/551",
+     "progress": 0.7143375680580762,
+     "line": null
+    },
+    {
+     "t": 147.094,
+     "stage": "Scoring 220/551",
+     "progress": 0.7197822141560798,
+     "line": null
+    },
+    {
+     "t": 147.094,
+     "stage": "Scoring 230/551",
+     "progress": 0.7252268602540834,
+     "line": null
+    },
+    {
+     "t": 147.095,
+     "stage": "Scoring 240/551",
+     "progress": 0.7306715063520871,
+     "line": null
+    },
+    {
+     "t": 147.095,
+     "stage": "Scoring 250/551",
+     "progress": 0.7361161524500908,
+     "line": null
+    },
+    {
+     "t": 147.095,
+     "stage": "Scoring 260/551",
+     "progress": 0.7415607985480943,
+     "line": null
+    },
+    {
+     "t": 147.095,
+     "stage": "Scoring 270/551",
+     "progress": 0.747005444646098,
+     "line": null
+    },
+    {
+     "t": 147.095,
+     "stage": "Scoring 280/551",
+     "progress": 0.7524500907441016,
+     "line": null
+    },
+    {
+     "t": 147.095,
+     "stage": "Scoring 290/551",
+     "progress": 0.7578947368421052,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 300/551",
+     "progress": 0.7633393829401088,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 310/551",
+     "progress": 0.7687840290381125,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 320/551",
+     "progress": 0.7742286751361162,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 330/551",
+     "progress": 0.7796733212341198,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 340/551",
+     "progress": 0.7851179673321234,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 350/551",
+     "progress": 0.790562613430127,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 360/551",
+     "progress": 0.7960072595281307,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 370/551",
+     "progress": 0.8014519056261342,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 380/551",
+     "progress": 0.8068965517241379,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 390/551",
+     "progress": 0.8123411978221415,
+     "line": null
+    },
+    {
+     "t": 147.096,
+     "stage": "Scoring 400/551",
+     "progress": 0.8177858439201452,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 410/551",
+     "progress": 0.8232304900181489,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 420/551",
+     "progress": 0.8286751361161524,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 430/551",
+     "progress": 0.8341197822141561,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 440/551",
+     "progress": 0.8395644283121597,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 450/551",
+     "progress": 0.8450090744101633,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 460/551",
+     "progress": 0.8504537205081669,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 470/551",
+     "progress": 0.8558983666061706,
+     "line": null
+    },
+    {
+     "t": 147.097,
+     "stage": "Scoring 480/551",
+     "progress": 0.8613430127041741,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 490/551",
+     "progress": 0.8667876588021779,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 500/551",
+     "progress": 0.8722323049001814,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 510/551",
+     "progress": 0.8776769509981851,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 520/551",
+     "progress": 0.8831215970961888,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 530/551",
+     "progress": 0.8885662431941923,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 540/551",
+     "progress": 0.894010889292196,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 550/551",
+     "progress": 0.8994555353901996,
+     "line": null
+    },
+    {
+     "t": 147.098,
+     "stage": "Scoring 551/551",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 147.1,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 147.101,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 175.67,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "16 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_7819d5bc",
+   "analysis_id": "a_ca9424da",
+   "variant": "fix-routing",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 225.82,
+   "log": [
+    {
+     "t": 0.888,
+     "stage": "Warming up cuda_archer (fix-routing)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 21.546,
+     "stage": "Running cuda_archer (fix-routing) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 22.022,
+     "stage": "Running cuda_archer (fix-routing) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 22.67,
+     "stage": "Running cuda_archer (fix-routing) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 22.774,
+     "stage": "Running cuda_archer (fix-routing) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 30.093,
+     "stage": "Running cuda_archer (fix-routing) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 31.344,
+     "stage": "Running cuda_archer (fix-routing) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 32.062,
+     "stage": "Running cuda_archer (fix-routing) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 32.336,
+     "stage": "Running cuda_archer (fix-routing) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 38.662,
+     "stage": "Running cuda_archer (fix-routing) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 40.499,
+     "stage": "Running cuda_archer (fix-routing) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 41.276,
+     "stage": "Running cuda_archer (fix-routing) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 41.458,
+     "stage": "Running cuda_archer (fix-routing) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 48.461,
+     "stage": "Running cuda_archer (fix-routing) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 49.41,
+     "stage": "Running cuda_archer (fix-routing) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 51.984,
+     "stage": "Running cuda_archer (fix-routing) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 53.013,
+     "stage": "Running cuda_archer (fix-routing) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 54.14,
+     "stage": "Running cuda_archer (fix-routing) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 55.607,
+     "stage": "Running cuda_archer (fix-routing) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 57.83,
+     "stage": "Running cuda_archer (fix-routing) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 58.041,
+     "stage": "Running cuda_archer (fix-routing) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 58.158,
+     "stage": "Running cuda_archer (fix-routing) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 63.913,
+     "stage": "Running cuda_archer (fix-routing) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 65.388,
+     "stage": "Running cuda_archer (fix-routing) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 65.405,
+     "stage": "Running cuda_archer (fix-routing) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 66.083,
+     "stage": "Running cuda_archer (fix-routing) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 66.947,
+     "stage": "Running cuda_archer (fix-routing) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 68.824,
+     "stage": "Running cuda_archer (fix-routing) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 70.135,
+     "stage": "Running cuda_archer (fix-routing) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 72.803,
+     "stage": "Running cuda_archer (fix-routing) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 73.38,
+     "stage": "Running cuda_archer (fix-routing) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 74.174,
+     "stage": "Running cuda_archer (fix-routing) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 75.67,
+     "stage": "Running cuda_archer (fix-routing) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 79.245,
+     "stage": "Running cuda_archer (fix-routing) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 80.964,
+     "stage": "Running cuda_archer (fix-routing) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 81.804,
+     "stage": "Running cuda_archer (fix-routing) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 83.778,
+     "stage": "Running cuda_archer (fix-routing) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 84.043,
+     "stage": "Running cuda_archer (fix-routing) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 85.759,
+     "stage": "Running cuda_archer (fix-routing) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 86.024,
+     "stage": "Running cuda_archer (fix-routing) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 88.11,
+     "stage": "Running cuda_archer (fix-routing) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 93.439,
+     "stage": "Running cuda_archer (fix-routing) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 93.439,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (fix-routing) on 41 samples"
+    },
+    {
+     "t": 93.441,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 98.672,
+     "stage": "Scoring 10/551",
+     "progress": 0.6054446460980036,
+     "line": null
+    },
+    {
+     "t": 102.749,
+     "stage": "Scoring 20/551",
+     "progress": 0.6108892921960072,
+     "line": null
+    },
+    {
+     "t": 104.381,
+     "stage": "Scoring 30/551",
+     "progress": 0.6163339382940108,
+     "line": null
+    },
+    {
+     "t": 106.342,
+     "stage": "Scoring 40/551",
+     "progress": 0.6217785843920145,
+     "line": null
+    },
+    {
+     "t": 106.342,
+     "stage": "Scoring 50/551",
+     "progress": 0.6272232304900182,
+     "line": null
+    },
+    {
+     "t": 108.19,
+     "stage": "Scoring 60/551",
+     "progress": 0.6326678765880217,
+     "line": null
+    },
+    {
+     "t": 111.064,
+     "stage": "Scoring 70/551",
+     "progress": 0.6381125226860254,
+     "line": null
+    },
+    {
+     "t": 111.417,
+     "stage": "Scoring 80/551",
+     "progress": 0.643557168784029,
+     "line": null
+    },
+    {
+     "t": 111.417,
+     "stage": "Scoring 90/551",
+     "progress": 0.6490018148820327,
+     "line": null
+    },
+    {
+     "t": 111.417,
+     "stage": "Scoring 100/551",
+     "progress": 0.6544464609800362,
+     "line": null
+    },
+    {
+     "t": 111.417,
+     "stage": "Scoring 110/551",
+     "progress": 0.6598911070780399,
+     "line": null
+    },
+    {
+     "t": 112.867,
+     "stage": "Scoring 120/551",
+     "progress": 0.6653357531760435,
+     "line": null
+    },
+    {
+     "t": 117.119,
+     "stage": "Scoring 130/551",
+     "progress": 0.6707803992740472,
+     "line": null
+    },
+    {
+     "t": 169.265,
+     "stage": "Scoring 140/551",
+     "progress": 0.6762250453720507,
+     "line": null
+    },
+    {
+     "t": 173.749,
+     "stage": "Scoring 150/551",
+     "progress": 0.6816696914700544,
+     "line": null
+    },
+    {
+     "t": 175.382,
+     "stage": "Scoring 160/551",
+     "progress": 0.6871143375680581,
+     "line": null
+    },
+    {
+     "t": 175.382,
+     "stage": "Scoring 170/551",
+     "progress": 0.6925589836660617,
+     "line": null
+    },
+    {
+     "t": 175.382,
+     "stage": "Scoring 180/551",
+     "progress": 0.6980036297640653,
+     "line": null
+    },
+    {
+     "t": 175.383,
+     "stage": "Scoring 190/551",
+     "progress": 0.7034482758620689,
+     "line": null
+    },
+    {
+     "t": 175.383,
+     "stage": "Scoring 200/551",
+     "progress": 0.7088929219600726,
+     "line": null
+    },
+    {
+     "t": 175.383,
+     "stage": "Scoring 210/551",
+     "progress": 0.7143375680580762,
+     "line": null
+    },
+    {
+     "t": 175.383,
+     "stage": "Scoring 220/551",
+     "progress": 0.7197822141560798,
+     "line": null
+    },
+    {
+     "t": 175.383,
+     "stage": "Scoring 230/551",
+     "progress": 0.7252268602540834,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 240/551",
+     "progress": 0.7306715063520871,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 250/551",
+     "progress": 0.7361161524500908,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 260/551",
+     "progress": 0.7415607985480943,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 270/551",
+     "progress": 0.747005444646098,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 280/551",
+     "progress": 0.7524500907441016,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 290/551",
+     "progress": 0.7578947368421052,
+     "line": null
+    },
+    {
+     "t": 175.384,
+     "stage": "Scoring 300/551",
+     "progress": 0.7633393829401088,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 310/551",
+     "progress": 0.7687840290381125,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 320/551",
+     "progress": 0.7742286751361162,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 330/551",
+     "progress": 0.7796733212341198,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 340/551",
+     "progress": 0.7851179673321234,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 350/551",
+     "progress": 0.790562613430127,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 360/551",
+     "progress": 0.7960072595281307,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 370/551",
+     "progress": 0.8014519056261342,
+     "line": null
+    },
+    {
+     "t": 175.385,
+     "stage": "Scoring 380/551",
+     "progress": 0.8068965517241379,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 390/551",
+     "progress": 0.8123411978221415,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 400/551",
+     "progress": 0.8177858439201452,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 410/551",
+     "progress": 0.8232304900181489,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 420/551",
+     "progress": 0.8286751361161524,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 430/551",
+     "progress": 0.8341197822141561,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 440/551",
+     "progress": 0.8395644283121597,
+     "line": null
+    },
+    {
+     "t": 175.386,
+     "stage": "Scoring 450/551",
+     "progress": 0.8450090744101633,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 460/551",
+     "progress": 0.8504537205081669,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 470/551",
+     "progress": 0.8558983666061706,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 480/551",
+     "progress": 0.8613430127041741,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 490/551",
+     "progress": 0.8667876588021779,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 500/551",
+     "progress": 0.8722323049001814,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 510/551",
+     "progress": 0.8776769509981851,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 520/551",
+     "progress": 0.8831215970961888,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 530/551",
+     "progress": 0.8885662431941923,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 540/551",
+     "progress": 0.894010889292196,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 550/551",
+     "progress": 0.8994555353901996,
+     "line": null
+    },
+    {
+     "t": 175.387,
+     "stage": "Scoring 551/551",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 175.389,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 175.389,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 225.83,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "19 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_cca33557",
+   "analysis_id": "a_ca9424da",
+   "variant": "fix-tools",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 225.22,
+   "log": [
+    {
+     "t": 0.873,
+     "stage": "Warming up cuda_archer (fix-tools)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 24.847,
+     "stage": "Running cuda_archer (fix-tools) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 25.134,
+     "stage": "Running cuda_archer (fix-tools) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 25.606,
+     "stage": "Running cuda_archer (fix-tools) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 25.639,
+     "stage": "Running cuda_archer (fix-tools) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 32.592,
+     "stage": "Running cuda_archer (fix-tools) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 33.943,
+     "stage": "Running cuda_archer (fix-tools) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 34.44,
+     "stage": "Running cuda_archer (fix-tools) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 35.391,
+     "stage": "Running cuda_archer (fix-tools) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 42.761,
+     "stage": "Running cuda_archer (fix-tools) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 43.001,
+     "stage": "Running cuda_archer (fix-tools) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 43.243,
+     "stage": "Running cuda_archer (fix-tools) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 45.591,
+     "stage": "Running cuda_archer (fix-tools) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 51.427,
+     "stage": "Running cuda_archer (fix-tools) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 51.64,
+     "stage": "Running cuda_archer (fix-tools) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 57.24,
+     "stage": "Running cuda_archer (fix-tools) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 57.624,
+     "stage": "Running cuda_archer (fix-tools) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 61.46,
+     "stage": "Running cuda_archer (fix-tools) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 63.212,
+     "stage": "Running cuda_archer (fix-tools) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 66.791,
+     "stage": "Running cuda_archer (fix-tools) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 67.676,
+     "stage": "Running cuda_archer (fix-tools) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 69.761,
+     "stage": "Running cuda_archer (fix-tools) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 71.575,
+     "stage": "Running cuda_archer (fix-tools) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 75.678,
+     "stage": "Running cuda_archer (fix-tools) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 75.842,
+     "stage": "Running cuda_archer (fix-tools) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 78.255,
+     "stage": "Running cuda_archer (fix-tools) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 78.84,
+     "stage": "Running cuda_archer (fix-tools) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 80.523,
+     "stage": "Running cuda_archer (fix-tools) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 81.115,
+     "stage": "Running cuda_archer (fix-tools) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 83.529,
+     "stage": "Running cuda_archer (fix-tools) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 85.131,
+     "stage": "Running cuda_archer (fix-tools) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 86.22,
+     "stage": "Running cuda_archer (fix-tools) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 89.641,
+     "stage": "Running cuda_archer (fix-tools) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 91.641,
+     "stage": "Running cuda_archer (fix-tools) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 92.606,
+     "stage": "Running cuda_archer (fix-tools) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 92.905,
+     "stage": "Running cuda_archer (fix-tools) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 96.405,
+     "stage": "Running cuda_archer (fix-tools) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 96.612,
+     "stage": "Running cuda_archer (fix-tools) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 96.969,
+     "stage": "Running cuda_archer (fix-tools) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 97.255,
+     "stage": "Running cuda_archer (fix-tools) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 99.792,
+     "stage": "Running cuda_archer (fix-tools) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 100.963,
+     "stage": "Running cuda_archer (fix-tools) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 100.963,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (fix-tools) on 41 samples"
+    },
+    {
+     "t": 100.966,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 105.103,
+     "stage": "Scoring 10/583",
+     "progress": 0.6051457975986277,
+     "line": null
+    },
+    {
+     "t": 109.777,
+     "stage": "Scoring 20/583",
+     "progress": 0.6102915951972555,
+     "line": null
+    },
+    {
+     "t": 114.106,
+     "stage": "Scoring 30/583",
+     "progress": 0.6154373927958834,
+     "line": null
+    },
+    {
+     "t": 118.414,
+     "stage": "Scoring 40/583",
+     "progress": 0.6205831903945112,
+     "line": null
+    },
+    {
+     "t": 172.755,
+     "stage": "Scoring 50/583",
+     "progress": 0.6257289879931389,
+     "line": null
+    },
+    {
+     "t": 172.756,
+     "stage": "Scoring 60/583",
+     "progress": 0.6308747855917667,
+     "line": null
+    },
+    {
+     "t": 173.993,
+     "stage": "Scoring 70/583",
+     "progress": 0.6360205831903945,
+     "line": null
+    },
+    {
+     "t": 177.096,
+     "stage": "Scoring 80/583",
+     "progress": 0.6411663807890223,
+     "line": null
+    },
+    {
+     "t": 181.589,
+     "stage": "Scoring 90/583",
+     "progress": 0.6463121783876501,
+     "line": null
+    },
+    {
+     "t": 182.695,
+     "stage": "Scoring 100/583",
+     "progress": 0.6514579759862779,
+     "line": null
+    },
+    {
+     "t": 184.028,
+     "stage": "Scoring 110/583",
+     "progress": 0.6566037735849056,
+     "line": null
+    },
+    {
+     "t": 184.028,
+     "stage": "Scoring 120/583",
+     "progress": 0.6617495711835334,
+     "line": null
+    },
+    {
+     "t": 184.029,
+     "stage": "Scoring 130/583",
+     "progress": 0.6668953687821613,
+     "line": null
+    },
+    {
+     "t": 184.029,
+     "stage": "Scoring 140/583",
+     "progress": 0.672041166380789,
+     "line": null
+    },
+    {
+     "t": 184.491,
+     "stage": "Scoring 150/583",
+     "progress": 0.6771869639794168,
+     "line": null
+    },
+    {
+     "t": 188.535,
+     "stage": "Scoring 160/583",
+     "progress": 0.6823327615780446,
+     "line": null
+    },
+    {
+     "t": 192.222,
+     "stage": "Scoring 170/583",
+     "progress": 0.6874785591766723,
+     "line": null
+    },
+    {
+     "t": 195.807,
+     "stage": "Scoring 180/583",
+     "progress": 0.6926243567753001,
+     "line": null
+    },
+    {
+     "t": 198.896,
+     "stage": "Scoring 190/583",
+     "progress": 0.697770154373928,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 200/583",
+     "progress": 0.7029159519725557,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 210/583",
+     "progress": 0.7080617495711835,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 220/583",
+     "progress": 0.7132075471698113,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 230/583",
+     "progress": 0.718353344768439,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 240/583",
+     "progress": 0.7234991423670669,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 250/583",
+     "progress": 0.7286449399656947,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 260/583",
+     "progress": 0.7337907375643224,
+     "line": null
+    },
+    {
+     "t": 198.897,
+     "stage": "Scoring 270/583",
+     "progress": 0.7389365351629502,
+     "line": null
+    },
+    {
+     "t": 198.898,
+     "stage": "Scoring 280/583",
+     "progress": 0.744082332761578,
+     "line": null
+    },
+    {
+     "t": 198.898,
+     "stage": "Scoring 290/583",
+     "progress": 0.7492281303602057,
+     "line": null
+    },
+    {
+     "t": 198.898,
+     "stage": "Scoring 300/583",
+     "progress": 0.7543739279588336,
+     "line": null
+    },
+    {
+     "t": 198.898,
+     "stage": "Scoring 310/583",
+     "progress": 0.7595197255574614,
+     "line": null
+    },
+    {
+     "t": 198.898,
+     "stage": "Scoring 320/583",
+     "progress": 0.7646655231560892,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 330/583",
+     "progress": 0.7698113207547169,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 340/583",
+     "progress": 0.7749571183533448,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 350/583",
+     "progress": 0.7801029159519726,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 360/583",
+     "progress": 0.7852487135506003,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 370/583",
+     "progress": 0.7903945111492281,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 380/583",
+     "progress": 0.7955403087478559,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 390/583",
+     "progress": 0.8006861063464836,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 400/583",
+     "progress": 0.8058319039451115,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 410/583",
+     "progress": 0.8109777015437393,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 420/583",
+     "progress": 0.816123499142367,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 430/583",
+     "progress": 0.8212692967409948,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 440/583",
+     "progress": 0.8264150943396227,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 450/583",
+     "progress": 0.8315608919382504,
+     "line": null
+    },
+    {
+     "t": 198.899,
+     "stage": "Scoring 460/583",
+     "progress": 0.8367066895368782,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 470/583",
+     "progress": 0.841852487135506,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 480/583",
+     "progress": 0.8469982847341337,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 490/583",
+     "progress": 0.8521440823327615,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 500/583",
+     "progress": 0.8572898799313893,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 510/583",
+     "progress": 0.8624356775300172,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 520/583",
+     "progress": 0.8675814751286449,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 530/583",
+     "progress": 0.8727272727272727,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 540/583",
+     "progress": 0.8778730703259006,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 550/583",
+     "progress": 0.8830188679245283,
+     "line": null
+    },
+    {
+     "t": 198.9,
+     "stage": "Scoring 560/583",
+     "progress": 0.8881646655231561,
+     "line": null
+    },
+    {
+     "t": 198.901,
+     "stage": "Scoring 570/583",
+     "progress": 0.8933104631217839,
+     "line": null
+    },
+    {
+     "t": 198.901,
+     "stage": "Scoring 580/583",
+     "progress": 0.8984562607204116,
+     "line": null
+    },
+    {
+     "t": 198.901,
+     "stage": "Scoring 583/583",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 198.902,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 198.903,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 225.224,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "15 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_f4f80451",
+   "analysis_id": "a_ca9424da",
+   "variant": "fix-cost",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 208.8,
+   "log": [
+    {
+     "t": 0.983,
+     "stage": "Warming up cuda_archer (fix-cost)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 19.316,
+     "stage": "Running cuda_archer (fix-cost) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 20.062,
+     "stage": "Running cuda_archer (fix-cost) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 20.148,
+     "stage": "Running cuda_archer (fix-cost) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 22.762,
+     "stage": "Running cuda_archer (fix-cost) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 27.995,
+     "stage": "Running cuda_archer (fix-cost) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 28.037,
+     "stage": "Running cuda_archer (fix-cost) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 30.086,
+     "stage": "Running cuda_archer (fix-cost) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 34.122,
+     "stage": "Running cuda_archer (fix-cost) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 36.294,
+     "stage": "Running cuda_archer (fix-cost) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 37.647,
+     "stage": "Running cuda_archer (fix-cost) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 38.119,
+     "stage": "Running cuda_archer (fix-cost) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 43.176,
+     "stage": "Running cuda_archer (fix-cost) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 46.203,
+     "stage": "Running cuda_archer (fix-cost) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 46.712,
+     "stage": "Running cuda_archer (fix-cost) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 47.004,
+     "stage": "Running cuda_archer (fix-cost) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 55.049,
+     "stage": "Running cuda_archer (fix-cost) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 56.386,
+     "stage": "Running cuda_archer (fix-cost) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 57.237,
+     "stage": "Running cuda_archer (fix-cost) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 57.685,
+     "stage": "Running cuda_archer (fix-cost) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 64.686,
+     "stage": "Running cuda_archer (fix-cost) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 64.687,
+     "stage": "Running cuda_archer (fix-cost) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 67.451,
+     "stage": "Running cuda_archer (fix-cost) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 68.212,
+     "stage": "Running cuda_archer (fix-cost) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 73.187,
+     "stage": "Running cuda_archer (fix-cost) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 74.527,
+     "stage": "Running cuda_archer (fix-cost) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 75.085,
+     "stage": "Running cuda_archer (fix-cost) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 77.093,
+     "stage": "Running cuda_archer (fix-cost) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 78.633,
+     "stage": "Running cuda_archer (fix-cost) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 80.294,
+     "stage": "Running cuda_archer (fix-cost) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 80.664,
+     "stage": "Running cuda_archer (fix-cost) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 81.049,
+     "stage": "Running cuda_archer (fix-cost) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 85.774,
+     "stage": "Running cuda_archer (fix-cost) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 88.448,
+     "stage": "Running cuda_archer (fix-cost) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 89.467,
+     "stage": "Running cuda_archer (fix-cost) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 90.688,
+     "stage": "Running cuda_archer (fix-cost) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 90.707,
+     "stage": "Running cuda_archer (fix-cost) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 91.6,
+     "stage": "Running cuda_archer (fix-cost) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 93.257,
+     "stage": "Running cuda_archer (fix-cost) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 93.464,
+     "stage": "Running cuda_archer (fix-cost) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 93.846,
+     "stage": "Running cuda_archer (fix-cost) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 100.287,
+     "stage": "Running cuda_archer (fix-cost) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 100.287,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (fix-cost) on 41 samples"
+    },
+    {
+     "t": 100.29,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 104.982,
+     "stage": "Scoring 10/501",
+     "progress": 0.6059880239520958,
+     "line": null
+    },
+    {
+     "t": 109.157,
+     "stage": "Scoring 20/501",
+     "progress": 0.6119760479041916,
+     "line": null
+    },
+    {
+     "t": 112.854,
+     "stage": "Scoring 30/501",
+     "progress": 0.6179640718562874,
+     "line": null
+    },
+    {
+     "t": 117.445,
+     "stage": "Scoring 40/501",
+     "progress": 0.6239520958083832,
+     "line": null
+    },
+    {
+     "t": 119.051,
+     "stage": "Scoring 50/501",
+     "progress": 0.629940119760479,
+     "line": null
+    },
+    {
+     "t": 119.051,
+     "stage": "Scoring 60/501",
+     "progress": 0.6359281437125748,
+     "line": null
+    },
+    {
+     "t": 119.051,
+     "stage": "Scoring 70/501",
+     "progress": 0.6419161676646706,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 80/501",
+     "progress": 0.6479041916167665,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 90/501",
+     "progress": 0.6538922155688622,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 100/501",
+     "progress": 0.6598802395209581,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 110/501",
+     "progress": 0.6658682634730538,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 120/501",
+     "progress": 0.6718562874251497,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 130/501",
+     "progress": 0.6778443113772454,
+     "line": null
+    },
+    {
+     "t": 119.052,
+     "stage": "Scoring 140/501",
+     "progress": 0.6838323353293413,
+     "line": null
+    },
+    {
+     "t": 119.481,
+     "stage": "Scoring 150/501",
+     "progress": 0.6898203592814371,
+     "line": null
+    },
+    {
+     "t": 175.547,
+     "stage": "Scoring 160/501",
+     "progress": 0.6958083832335329,
+     "line": null
+    },
+    {
+     "t": 178.819,
+     "stage": "Scoring 170/501",
+     "progress": 0.7017964071856287,
+     "line": null
+    },
+    {
+     "t": 182.294,
+     "stage": "Scoring 180/501",
+     "progress": 0.7077844311377245,
+     "line": null
+    },
+    {
+     "t": 184.536,
+     "stage": "Scoring 190/501",
+     "progress": 0.7137724550898203,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 200/501",
+     "progress": 0.7197604790419161,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 210/501",
+     "progress": 0.725748502994012,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 220/501",
+     "progress": 0.7317365269461078,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 230/501",
+     "progress": 0.7377245508982035,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 240/501",
+     "progress": 0.7437125748502994,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 250/501",
+     "progress": 0.7497005988023951,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 260/501",
+     "progress": 0.755688622754491,
+     "line": null
+    },
+    {
+     "t": 184.537,
+     "stage": "Scoring 270/501",
+     "progress": 0.7616766467065867,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 280/501",
+     "progress": 0.7676646706586826,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 290/501",
+     "progress": 0.7736526946107785,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 300/501",
+     "progress": 0.7796407185628742,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 310/501",
+     "progress": 0.7856287425149701,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 320/501",
+     "progress": 0.7916167664670659,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 330/501",
+     "progress": 0.7976047904191617,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 340/501",
+     "progress": 0.8035928143712574,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 350/501",
+     "progress": 0.8095808383233533,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 360/501",
+     "progress": 0.8155688622754491,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 370/501",
+     "progress": 0.8215568862275449,
+     "line": null
+    },
+    {
+     "t": 184.538,
+     "stage": "Scoring 380/501",
+     "progress": 0.8275449101796407,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 390/501",
+     "progress": 0.8335329341317366,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 400/501",
+     "progress": 0.8395209580838323,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 410/501",
+     "progress": 0.8455089820359281,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 420/501",
+     "progress": 0.8514970059880239,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 430/501",
+     "progress": 0.8574850299401198,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 440/501",
+     "progress": 0.8634730538922155,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 450/501",
+     "progress": 0.8694610778443114,
+     "line": null
+    },
+    {
+     "t": 184.539,
+     "stage": "Scoring 460/501",
+     "progress": 0.8754491017964072,
+     "line": null
+    },
+    {
+     "t": 184.54,
+     "stage": "Scoring 470/501",
+     "progress": 0.881437125748503,
+     "line": null
+    },
+    {
+     "t": 184.54,
+     "stage": "Scoring 480/501",
+     "progress": 0.8874251497005987,
+     "line": null
+    },
+    {
+     "t": 184.54,
+     "stage": "Scoring 490/501",
+     "progress": 0.8934131736526946,
+     "line": null
+    },
+    {
+     "t": 184.54,
+     "stage": "Scoring 500/501",
+     "progress": 0.8994011976047904,
+     "line": null
+    },
+    {
+     "t": 184.54,
+     "stage": "Scoring 501/501",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 184.541,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 184.542,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 208.815,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "16 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_67b90a63",
+   "analysis_id": "a_ca9424da",
+   "variant": "fix-generation",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 175.81,
+   "log": [
+    {
+     "t": 0.924,
+     "stage": "Warming up cuda_archer (fix-generation)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 12.553,
+     "stage": "Running cuda_archer (fix-generation) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 12.835,
+     "stage": "Running cuda_archer (fix-generation) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 13.043,
+     "stage": "Running cuda_archer (fix-generation) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 14.015,
+     "stage": "Running cuda_archer (fix-generation) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 16.72,
+     "stage": "Running cuda_archer (fix-generation) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 17.453,
+     "stage": "Running cuda_archer (fix-generation) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 18.11,
+     "stage": "Running cuda_archer (fix-generation) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 18.264,
+     "stage": "Running cuda_archer (fix-generation) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 21.568,
+     "stage": "Running cuda_archer (fix-generation) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 22.425,
+     "stage": "Running cuda_archer (fix-generation) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 22.643,
+     "stage": "Running cuda_archer (fix-generation) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 23.315,
+     "stage": "Running cuda_archer (fix-generation) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 25.891,
+     "stage": "Running cuda_archer (fix-generation) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 26.25,
+     "stage": "Running cuda_archer (fix-generation) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 27.779,
+     "stage": "Running cuda_archer (fix-generation) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 30.273,
+     "stage": "Running cuda_archer (fix-generation) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 31.835,
+     "stage": "Running cuda_archer (fix-generation) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 34.933,
+     "stage": "Running cuda_archer (fix-generation) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 35.273,
+     "stage": "Running cuda_archer (fix-generation) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 37.328,
+     "stage": "Running cuda_archer (fix-generation) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 38.04,
+     "stage": "Running cuda_archer (fix-generation) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 41.187,
+     "stage": "Running cuda_archer (fix-generation) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 41.572,
+     "stage": "Running cuda_archer (fix-generation) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 42.572,
+     "stage": "Running cuda_archer (fix-generation) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 42.717,
+     "stage": "Running cuda_archer (fix-generation) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 44.583,
+     "stage": "Running cuda_archer (fix-generation) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 45.032,
+     "stage": "Running cuda_archer (fix-generation) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 45.26,
+     "stage": "Running cuda_archer (fix-generation) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 46.889,
+     "stage": "Running cuda_archer (fix-generation) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 48.553,
+     "stage": "Running cuda_archer (fix-generation) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 49.322,
+     "stage": "Running cuda_archer (fix-generation) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 50.969,
+     "stage": "Running cuda_archer (fix-generation) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 52.358,
+     "stage": "Running cuda_archer (fix-generation) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 52.379,
+     "stage": "Running cuda_archer (fix-generation) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 52.459,
+     "stage": "Running cuda_archer (fix-generation) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 54.344,
+     "stage": "Running cuda_archer (fix-generation) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 55.93,
+     "stage": "Running cuda_archer (fix-generation) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 56.264,
+     "stage": "Running cuda_archer (fix-generation) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 57.164,
+     "stage": "Running cuda_archer (fix-generation) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 58.145,
+     "stage": "Running cuda_archer (fix-generation) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 58.884,
+     "stage": "Running cuda_archer (fix-generation) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 58.885,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (fix-generation) on 41 samples"
+    },
+    {
+     "t": 58.888,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 62.967,
+     "stage": "Scoring 10/583",
+     "progress": 0.6051457975986277,
+     "line": null
+    },
+    {
+     "t": 67.697,
+     "stage": "Scoring 20/583",
+     "progress": 0.6102915951972555,
+     "line": null
+    },
+    {
+     "t": 71.68,
+     "stage": "Scoring 30/583",
+     "progress": 0.6154373927958834,
+     "line": null
+    },
+    {
+     "t": 74.902,
+     "stage": "Scoring 40/583",
+     "progress": 0.6205831903945112,
+     "line": null
+    },
+    {
+     "t": 77.368,
+     "stage": "Scoring 50/583",
+     "progress": 0.6257289879931389,
+     "line": null
+    },
+    {
+     "t": 77.368,
+     "stage": "Scoring 60/583",
+     "progress": 0.6308747855917667,
+     "line": null
+    },
+    {
+     "t": 79.269,
+     "stage": "Scoring 70/583",
+     "progress": 0.6360205831903945,
+     "line": null
+    },
+    {
+     "t": 133.985,
+     "stage": "Scoring 80/583",
+     "progress": 0.6411663807890223,
+     "line": null
+    },
+    {
+     "t": 135.989,
+     "stage": "Scoring 90/583",
+     "progress": 0.6463121783876501,
+     "line": null
+    },
+    {
+     "t": 137.852,
+     "stage": "Scoring 100/583",
+     "progress": 0.6514579759862779,
+     "line": null
+    },
+    {
+     "t": 139.747,
+     "stage": "Scoring 110/583",
+     "progress": 0.6566037735849056,
+     "line": null
+    },
+    {
+     "t": 139.747,
+     "stage": "Scoring 120/583",
+     "progress": 0.6617495711835334,
+     "line": null
+    },
+    {
+     "t": 139.748,
+     "stage": "Scoring 130/583",
+     "progress": 0.6668953687821613,
+     "line": null
+    },
+    {
+     "t": 139.748,
+     "stage": "Scoring 140/583",
+     "progress": 0.672041166380789,
+     "line": null
+    },
+    {
+     "t": 139.748,
+     "stage": "Scoring 150/583",
+     "progress": 0.6771869639794168,
+     "line": null
+    },
+    {
+     "t": 143.227,
+     "stage": "Scoring 160/583",
+     "progress": 0.6823327615780446,
+     "line": null
+    },
+    {
+     "t": 146.785,
+     "stage": "Scoring 170/583",
+     "progress": 0.6874785591766723,
+     "line": null
+    },
+    {
+     "t": 149.013,
+     "stage": "Scoring 180/583",
+     "progress": 0.6926243567753001,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 190/583",
+     "progress": 0.697770154373928,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 200/583",
+     "progress": 0.7029159519725557,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 210/583",
+     "progress": 0.7080617495711835,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 220/583",
+     "progress": 0.7132075471698113,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 230/583",
+     "progress": 0.718353344768439,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 240/583",
+     "progress": 0.7234991423670669,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 250/583",
+     "progress": 0.7286449399656947,
+     "line": null
+    },
+    {
+     "t": 150.588,
+     "stage": "Scoring 260/583",
+     "progress": 0.7337907375643224,
+     "line": null
+    },
+    {
+     "t": 150.589,
+     "stage": "Scoring 270/583",
+     "progress": 0.7389365351629502,
+     "line": null
+    },
+    {
+     "t": 150.589,
+     "stage": "Scoring 280/583",
+     "progress": 0.744082332761578,
+     "line": null
+    },
+    {
+     "t": 150.589,
+     "stage": "Scoring 290/583",
+     "progress": 0.7492281303602057,
+     "line": null
+    },
+    {
+     "t": 150.589,
+     "stage": "Scoring 300/583",
+     "progress": 0.7543739279588336,
+     "line": null
+    },
+    {
+     "t": 150.589,
+     "stage": "Scoring 310/583",
+     "progress": 0.7595197255574614,
+     "line": null
+    },
+    {
+     "t": 150.589,
+     "stage": "Scoring 320/583",
+     "progress": 0.7646655231560892,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 330/583",
+     "progress": 0.7698113207547169,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 340/583",
+     "progress": 0.7749571183533448,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 350/583",
+     "progress": 0.7801029159519726,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 360/583",
+     "progress": 0.7852487135506003,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 370/583",
+     "progress": 0.7903945111492281,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 380/583",
+     "progress": 0.7955403087478559,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 390/583",
+     "progress": 0.8006861063464836,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 400/583",
+     "progress": 0.8058319039451115,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 410/583",
+     "progress": 0.8109777015437393,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 420/583",
+     "progress": 0.816123499142367,
+     "line": null
+    },
+    {
+     "t": 150.59,
+     "stage": "Scoring 430/583",
+     "progress": 0.8212692967409948,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 440/583",
+     "progress": 0.8264150943396227,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 450/583",
+     "progress": 0.8315608919382504,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 460/583",
+     "progress": 0.8367066895368782,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 470/583",
+     "progress": 0.841852487135506,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 480/583",
+     "progress": 0.8469982847341337,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 490/583",
+     "progress": 0.8521440823327615,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 500/583",
+     "progress": 0.8572898799313893,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 510/583",
+     "progress": 0.8624356775300172,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 520/583",
+     "progress": 0.8675814751286449,
+     "line": null
+    },
+    {
+     "t": 150.591,
+     "stage": "Scoring 530/583",
+     "progress": 0.8727272727272727,
+     "line": null
+    },
+    {
+     "t": 150.592,
+     "stage": "Scoring 540/583",
+     "progress": 0.8778730703259006,
+     "line": null
+    },
+    {
+     "t": 150.592,
+     "stage": "Scoring 550/583",
+     "progress": 0.8830188679245283,
+     "line": null
+    },
+    {
+     "t": 150.592,
+     "stage": "Scoring 560/583",
+     "progress": 0.8881646655231561,
+     "line": null
+    },
+    {
+     "t": 150.592,
+     "stage": "Scoring 570/583",
+     "progress": 0.8933104631217839,
+     "line": null
+    },
+    {
+     "t": 150.592,
+     "stage": "Scoring 580/583",
+     "progress": 0.8984562607204116,
+     "line": null
+    },
+    {
+     "t": 150.592,
+     "stage": "Scoring 583/583",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 150.593,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 150.594,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 175.818,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "16 bottleneck(s) found"
+    }
+   ]
+  },
+  {
+   "run_id": "r_489e0d3a",
+   "analysis_id": "a_ca9424da",
+   "variant": "improved",
+   "limit": null,
+   "attachments": [
+    [
+     "guardrail:screen_input",
+     "injection_resistance"
+    ],
+    [
+     "llm:generate_answer",
+     "faithfulness"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "faithfulness"
+    ],
+    [
+     "retriever:retrieve",
+     "context_precision"
+    ],
+    [
+     "retriever:retrieve",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "routing_accuracy"
+    ],
+    [
+     "entrypoint:ask",
+     "answer_relevance"
+    ],
+    [
+     "external_api:fetch_driver_matrix",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "cost"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "latency"
+    ],
+    [
+     "llm:generate_tool_answer",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:review_kernel",
+     "faithfulness"
+    ],
+    [
+     "llm:review_kernel",
+     "numeric_accuracy"
+    ],
+    [
+     "llm:rewrite_query",
+     "cost"
+    ],
+    [
+     "llm:rewrite_query",
+     "latency"
+    ],
+    [
+     "memory:conversation_memory",
+     "memory_footprint"
+    ],
+    [
+     "parser:parse_route",
+     "parse_success"
+    ],
+    [
+     "reranker:rerank",
+     "context_precision"
+    ],
+    [
+     "tool:check_compatibility",
+     "tool_correctness"
+    ],
+    [
+     "tool:file_perf_ticket",
+     "tool_correctness"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "numeric_accuracy"
+    ],
+    [
+     "tool:lookup_gpu_specs",
+     "tool_correctness"
+    ],
+    [
+     "tool:occupancy_calculator",
+     "tool_correctness"
+    ],
+    [
+     "entrypoint:ask",
+     "cost"
+    ],
+    [
+     "entrypoint:ask",
+     "latency"
+    ],
+    [
+     "reranker:rerank",
+     "context_relevance"
+    ],
+    [
+     "router:route_query",
+     "cost"
+    ]
+   ],
+   "duration_s": 92.54,
+   "log": [
+    {
+     "t": 0.913,
+     "stage": "Warming up cuda_archer (improved)",
+     "progress": 0.03,
+     "line": null
+    },
+    {
+     "t": 11.468,
+     "stage": "Running cuda_archer (improved) 1/41",
+     "progress": 0.06219512195121951,
+     "line": null
+    },
+    {
+     "t": 11.858,
+     "stage": "Running cuda_archer (improved) 2/41",
+     "progress": 0.07439024390243903,
+     "line": null
+    },
+    {
+     "t": 11.885,
+     "stage": "Running cuda_archer (improved) 3/41",
+     "progress": 0.08658536585365853,
+     "line": null
+    },
+    {
+     "t": 12.86,
+     "stage": "Running cuda_archer (improved) 4/41",
+     "progress": 0.09878048780487805,
+     "line": null
+    },
+    {
+     "t": 16.059,
+     "stage": "Running cuda_archer (improved) 5/41",
+     "progress": 0.11097560975609756,
+     "line": null
+    },
+    {
+     "t": 16.848,
+     "stage": "Running cuda_archer (improved) 6/41",
+     "progress": 0.12317073170731707,
+     "line": null
+    },
+    {
+     "t": 16.864,
+     "stage": "Running cuda_archer (improved) 7/41",
+     "progress": 0.1353658536585366,
+     "line": null
+    },
+    {
+     "t": 17.375,
+     "stage": "Running cuda_archer (improved) 8/41",
+     "progress": 0.14756097560975612,
+     "line": null
+    },
+    {
+     "t": 20.842,
+     "stage": "Running cuda_archer (improved) 9/41",
+     "progress": 0.1597560975609756,
+     "line": null
+    },
+    {
+     "t": 21.089,
+     "stage": "Running cuda_archer (improved) 10/41",
+     "progress": 0.1719512195121951,
+     "line": null
+    },
+    {
+     "t": 22.152,
+     "stage": "Running cuda_archer (improved) 11/41",
+     "progress": 0.18414634146341463,
+     "line": null
+    },
+    {
+     "t": 22.959,
+     "stage": "Running cuda_archer (improved) 12/41",
+     "progress": 0.19634146341463415,
+     "line": null
+    },
+    {
+     "t": 24.691,
+     "stage": "Running cuda_archer (improved) 13/41",
+     "progress": 0.20853658536585368,
+     "line": null
+    },
+    {
+     "t": 24.927,
+     "stage": "Running cuda_archer (improved) 14/41",
+     "progress": 0.2207317073170732,
+     "line": null
+    },
+    {
+     "t": 27.066,
+     "stage": "Running cuda_archer (improved) 15/41",
+     "progress": 0.23292682926829267,
+     "line": null
+    },
+    {
+     "t": 27.429,
+     "stage": "Running cuda_archer (improved) 16/41",
+     "progress": 0.2451219512195122,
+     "line": null
+    },
+    {
+     "t": 28.756,
+     "stage": "Running cuda_archer (improved) 17/41",
+     "progress": 0.2573170731707317,
+     "line": null
+    },
+    {
+     "t": 29.344,
+     "stage": "Running cuda_archer (improved) 18/41",
+     "progress": 0.26951219512195124,
+     "line": null
+    },
+    {
+     "t": 30.429,
+     "stage": "Running cuda_archer (improved) 19/41",
+     "progress": 0.28170731707317076,
+     "line": null
+    },
+    {
+     "t": 31.106,
+     "stage": "Running cuda_archer (improved) 20/41",
+     "progress": 0.2939024390243902,
+     "line": null
+    },
+    {
+     "t": 31.813,
+     "stage": "Running cuda_archer (improved) 21/41",
+     "progress": 0.30609756097560975,
+     "line": null
+    },
+    {
+     "t": 33.005,
+     "stage": "Running cuda_archer (improved) 22/41",
+     "progress": 0.3182926829268293,
+     "line": null
+    },
+    {
+     "t": 34.704,
+     "stage": "Running cuda_archer (improved) 23/41",
+     "progress": 0.3304878048780488,
+     "line": null
+    },
+    {
+     "t": 34.762,
+     "stage": "Running cuda_archer (improved) 24/41",
+     "progress": 0.34268292682926826,
+     "line": null
+    },
+    {
+     "t": 34.943,
+     "stage": "Running cuda_archer (improved) 25/41",
+     "progress": 0.3548780487804878,
+     "line": null
+    },
+    {
+     "t": 35.219,
+     "stage": "Running cuda_archer (improved) 26/41",
+     "progress": 0.3670731707317073,
+     "line": null
+    },
+    {
+     "t": 37.668,
+     "stage": "Running cuda_archer (improved) 27/41",
+     "progress": 0.37926829268292683,
+     "line": null
+    },
+    {
+     "t": 37.815,
+     "stage": "Running cuda_archer (improved) 28/41",
+     "progress": 0.39146341463414636,
+     "line": null
+    },
+    {
+     "t": 38.697,
+     "stage": "Running cuda_archer (improved) 29/41",
+     "progress": 0.4036585365853658,
+     "line": null
+    },
+    {
+     "t": 38.836,
+     "stage": "Running cuda_archer (improved) 30/41",
+     "progress": 0.41585365853658535,
+     "line": null
+    },
+    {
+     "t": 40.313,
+     "stage": "Running cuda_archer (improved) 31/41",
+     "progress": 0.42804878048780487,
+     "line": null
+    },
+    {
+     "t": 40.883,
+     "stage": "Running cuda_archer (improved) 32/41",
+     "progress": 0.4402439024390244,
+     "line": null
+    },
+    {
+     "t": 41.384,
+     "stage": "Running cuda_archer (improved) 33/41",
+     "progress": 0.4524390243902439,
+     "line": null
+    },
+    {
+     "t": 41.711,
+     "stage": "Running cuda_archer (improved) 34/41",
+     "progress": 0.4646341463414634,
+     "line": null
+    },
+    {
+     "t": 41.717,
+     "stage": "Running cuda_archer (improved) 35/41",
+     "progress": 0.4768292682926829,
+     "line": null
+    },
+    {
+     "t": 41.722,
+     "stage": "Running cuda_archer (improved) 36/41",
+     "progress": 0.48902439024390243,
+     "line": null
+    },
+    {
+     "t": 41.729,
+     "stage": "Running cuda_archer (improved) 37/41",
+     "progress": 0.501219512195122,
+     "line": null
+    },
+    {
+     "t": 41.734,
+     "stage": "Running cuda_archer (improved) 38/41",
+     "progress": 0.5134146341463415,
+     "line": null
+    },
+    {
+     "t": 42.823,
+     "stage": "Running cuda_archer (improved) 39/41",
+     "progress": 0.525609756097561,
+     "line": null
+    },
+    {
+     "t": 43.706,
+     "stage": "Running cuda_archer (improved) 40/41",
+     "progress": 0.5378048780487805,
+     "line": null
+    },
+    {
+     "t": 44.871,
+     "stage": "Running cuda_archer (improved) 41/41",
+     "progress": 0.55,
+     "line": null
+    },
+    {
+     "t": 44.871,
+     "stage": "Ran 41 samples",
+     "progress": 0.55,
+     "line": "Ran cuda_archer (improved) on 41 samples"
+    },
+    {
+     "t": 44.874,
+     "stage": "Mapping spans to architecture",
+     "progress": 0.58,
+     "line": "Mapped runtime spans to graph nodes"
+    },
+    {
+     "t": 48.612,
+     "stage": "Scoring 10/478",
+     "progress": 0.6062761506276151,
+     "line": null
+    },
+    {
+     "t": 51.847,
+     "stage": "Scoring 20/478",
+     "progress": 0.6125523012552301,
+     "line": null
+    },
+    {
+     "t": 54.159,
+     "stage": "Scoring 30/478",
+     "progress": 0.6188284518828452,
+     "line": null
+    },
+    {
+     "t": 55.423,
+     "stage": "Scoring 40/478",
+     "progress": 0.6251046025104602,
+     "line": null
+    },
+    {
+     "t": 55.423,
+     "stage": "Scoring 50/478",
+     "progress": 0.6313807531380753,
+     "line": null
+    },
+    {
+     "t": 55.423,
+     "stage": "Scoring 60/478",
+     "progress": 0.6376569037656904,
+     "line": null
+    },
+    {
+     "t": 55.423,
+     "stage": "Scoring 70/478",
+     "progress": 0.6439330543933054,
+     "line": null
+    },
+    {
+     "t": 55.424,
+     "stage": "Scoring 80/478",
+     "progress": 0.6502092050209205,
+     "line": null
+    },
+    {
+     "t": 55.424,
+     "stage": "Scoring 90/478",
+     "progress": 0.6564853556485355,
+     "line": null
+    },
+    {
+     "t": 55.424,
+     "stage": "Scoring 100/478",
+     "progress": 0.6627615062761506,
+     "line": null
+    },
+    {
+     "t": 56.487,
+     "stage": "Scoring 110/478",
+     "progress": 0.6690376569037657,
+     "line": null
+    },
+    {
+     "t": 59.831,
+     "stage": "Scoring 120/478",
+     "progress": 0.6753138075313807,
+     "line": null
+    },
+    {
+     "t": 62.647,
+     "stage": "Scoring 130/478",
+     "progress": 0.6815899581589958,
+     "line": null
+    },
+    {
+     "t": 65.04,
+     "stage": "Scoring 140/478",
+     "progress": 0.6878661087866108,
+     "line": null
+    },
+    {
+     "t": 66.596,
+     "stage": "Scoring 150/478",
+     "progress": 0.6941422594142259,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 160/478",
+     "progress": 0.700418410041841,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 170/478",
+     "progress": 0.706694560669456,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 180/478",
+     "progress": 0.7129707112970711,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 190/478",
+     "progress": 0.7192468619246861,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 200/478",
+     "progress": 0.7255230125523012,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 210/478",
+     "progress": 0.7317991631799163,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 220/478",
+     "progress": 0.7380753138075313,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 230/478",
+     "progress": 0.7443514644351464,
+     "line": null
+    },
+    {
+     "t": 66.597,
+     "stage": "Scoring 240/478",
+     "progress": 0.7506276150627615,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 250/478",
+     "progress": 0.7569037656903765,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 260/478",
+     "progress": 0.7631799163179916,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 270/478",
+     "progress": 0.7694560669456066,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 280/478",
+     "progress": 0.7757322175732217,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 290/478",
+     "progress": 0.7820083682008367,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 300/478",
+     "progress": 0.7882845188284519,
+     "line": null
+    },
+    {
+     "t": 66.598,
+     "stage": "Scoring 310/478",
+     "progress": 0.794560669456067,
+     "line": null
+    },
+    {
+     "t": 66.599,
+     "stage": "Scoring 320/478",
+     "progress": 0.800836820083682,
+     "line": null
+    },
+    {
+     "t": 66.599,
+     "stage": "Scoring 330/478",
+     "progress": 0.8071129707112971,
+     "line": null
+    },
+    {
+     "t": 66.599,
+     "stage": "Scoring 340/478",
+     "progress": 0.8133891213389122,
+     "line": null
+    },
+    {
+     "t": 66.599,
+     "stage": "Scoring 350/478",
+     "progress": 0.8196652719665272,
+     "line": null
+    },
+    {
+     "t": 66.599,
+     "stage": "Scoring 360/478",
+     "progress": 0.8259414225941423,
+     "line": null
+    },
+    {
+     "t": 66.599,
+     "stage": "Scoring 370/478",
+     "progress": 0.8322175732217573,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 380/478",
+     "progress": 0.8384937238493724,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 390/478",
+     "progress": 0.8447698744769874,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 400/478",
+     "progress": 0.8510460251046025,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 410/478",
+     "progress": 0.8573221757322176,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 420/478",
+     "progress": 0.8635983263598326,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 430/478",
+     "progress": 0.8698744769874477,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 440/478",
+     "progress": 0.8761506276150628,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 450/478",
+     "progress": 0.8824267782426778,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 460/478",
+     "progress": 0.8887029288702928,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 470/478",
+     "progress": 0.894979079497908,
+     "line": null
+    },
+    {
+     "t": 66.6,
+     "stage": "Scoring 478/478",
+     "progress": 0.8999999999999999,
+     "line": null
+    },
+    {
+     "t": 66.602,
+     "stage": "Aggregated scores",
+     "progress": 0.92,
+     "line": "Scored 30 attachment(s)"
+    },
+    {
+     "t": 66.603,
+     "stage": "Diagnosing bottlenecks",
+     "progress": 0.95,
+     "line": null
+    },
+    {
+     "t": 92.549,
+     "stage": "Done",
+     "progress": 1.0,
+     "line": "10 bottleneck(s) found"
+    }
+   ]
+  }
+ ]
+}
