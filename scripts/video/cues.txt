@@ -1,0 +1,56 @@
+# EvalGraph demo video: narration cue sheet (read by make_demo_video.py)
+#
+#   mm:ss | narration            spoken at that time in the final video
+#   >     on-screen action        what to do while recording (ignored by the tool)
+#   #     comment                 ignored
+#
+# Recorded in REPLAY mode ($env:EVALGRAPH_REPLAY='1'): analysis replays in ~8 s, every run in ~10 s, so the times below
+# hold if you follow the actions. After recording, watch your video and move the times to match your clicks.
+# Every number below is from the real recording in fixtures/demo/ (2026-10-08, DIAL, 41 golden samples). Don't add others.
+
+00:00.0 | Every LLM team asks the same question too late: where does it actually break? Dashboards show a bad score, not the line of code that caused it.
+> Home screen, cursor still.
+
+00:12.0 | EvalGraph starts from the code. Paste a GitHub link to any LLM app.
+> Paste https://github.com/SunilKumarPradhan/cuda-archer, click Analyze at about 00:15.
+
+00:18.3 | Our demo target is CUDA Archer, a GPU co-pilot we built: a LangGraph agent with retrieval, routing, tools, a guardrail and memory, on EPAM DIAL. EvalGraph never runs code to understand it. It parses the syntax tree, ranks the key code slices, and has an LLM label each component, checked against the real lines.
+> Progress checklist ticks (about 8 s), then the graph animates in. Let it settle.
+
+00:42.2 | Twenty-six components, and twenty-one hotspots: places this app is likely to fail.
+> Hover the summary panel, then the hotspot bar.
+
+00:48.7 | Why the retriever? Top-k of ten, no reranker, twelve-hundred-character chunks, each with its exact file and line. And the guardrail is off, with a secret in the system prompt.
+> Click Knowledge Retriever, then WHY?. When the guardrail is mentioned, click Input Guardrail, then WHY?.
+
+01:02.3 | In evaluation mode, EvalGraph says which evaluator belongs where. Context precision fits the retriever; the guardrail refuses it. Or apply all thirty recommendations in one click.
+> EVALUATION toggle. Drag Context Precision onto the Retriever, then onto the Guardrail (toast). Click Apply recommended.
+
+01:16.3 | Run CUDA Archer's forty-one-question golden set. This is a replay of a real recorded run on DIAL, judged by Claude, a different model family from the app.
+> Run Evaluation (baseline) right away. Replay takes about 10 s.
+
+01:28.2 | Scores land on the architecture. Retriever precision, thirteen percent. Injection resistance, one of four probes. Every tool: zero.
+> Hover the Retriever, the Guardrail, then the tool nodes.
+
+01:39.8 | Why? The router's JSON never parses, so no tool is ever called. The symptom is in the tools; the bottleneck is upstream.
+> Run report: open the Route Parser card, show the contributors.
+
+01:50.0 | Try the suggested routing fix.
+> Route Parser card: Try suggested fix (fix-routing). Replay takes about 10 s.
+
+02:00.0 | Measured, not projected: parse success goes from zero to one hundred percent, routing from thirty-nine to eighty, and the tools start working. Fixing the tools alone changed nothing.
+> Before / after table.
+
+02:13.7 | Now fix everything.
+> Fix everything (improved). Replay takes about 10 s.
+
+02:24.0 | Faithfulness, fifty-nine to eighty-five percent. Injection resistance, four of four. P95 latency, eleven seconds to five and a half. Cost per request, almost six times lower.
+> Scroll the before / after table.
+
+# Optional (delete this cue for a shorter cut). Record this clip separately in REAL mode on VPN, or the public repo is
+# analyzed without the LLM step and shows function-name labels.
+02:39.3 | It's not built for one repo. Any Python, JavaScript or notebook LLM app gets this map, and runnable apps execute in an isolated Docker sandbox that never sees the real API key.
+> Home, analyze a public repo (e.g. https://github.com/alejandro-ao/ask-multiple-pdfs), show its graph.
+
+02:53.6 | EvalGraph: an executable map of where your AI app breaks, and proof the fix works.
+> End on the improved graph.
